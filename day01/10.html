@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* span.amos{
+      background-color: red;
+    } */
+    /* .active {
+      background-color: #ccc;
+    } */
+    .tab {
+      display: inline-block;
+      padding: 10px 30px;
+      background-color: #ddd;
+      border: 1px solid #ddd;
+      border-bottom: transparent;
+      position: relative;
+      bottom: -1px;
+    }
+
+    .tab-content {
+      display: none;
+      border: 1px solid #ccc;
+      padding: 20px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+    .tab.active{
+      background-color: #fff;
+      border-bottom: 1px solid #fff;
+    }
+
+    /* 這個有趣 */
+    .tab-group {
+      counter-reset: my-area 0;
+    }
+
+    .tab::before {
+      content: counter(my-area) '. ';
+      counter-increment: my-area 1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="tab-place">
+    <div class="tab-group">
+      <div class="tab A active" id="A">A</div>
+      <div class="tab B" id="B">B</div>
+      <div class="tab C" id="C">C</div>
+    </div>
+    <div class="content-group">
+      <div class="tab-content AC active">
+AAAAAAAAAAAAAAAAAAAAAAAAAAA
+      </div>
+      <div class="tab-content BC">
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+      </div>
+      <div class="tab-content CC">
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+
+    $(function () {
+      $('.A').click(
+        function(){
+          $('.A').addClass('active');
+          $('.B, .C').removeClass('active');
+          $('.AC').show();
+          $('.BC, .CC').hide();
+        }
+      )
+      $('.B').click(
+        function(){
+          $('.B').addClass('active');
+          $('.A, .C').removeClass('active');
+          $('.BC').show();
+          $('.AC , .CC').hide();
+        }
+      )
+      $('.C').click(
+        function(){
+          $('.C').addClass('active');
+          $('.A, .B').removeClass('active');
+          $('.CC').show();
+          $('.AC, .BC').hide();
+        }
+      )
+
+      // 點到.tab-group就會壞掉～
+      // $('.tab-group').click(
+      //   function(e){
+      //     e.stopPropagation();
+      //     $('.active').removeClass('active');
+      //     // $('.' + e.target.id + 'C').addClass('active');
+      //     $('.tab-content').eq($(e.target).index()).addClass('active');
+      //     $(e.target).addClass('active');
+      //   }
+      // )
+    })
+  </script>
+</body>
+
+</html>

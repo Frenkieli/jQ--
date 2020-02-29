@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .content {
+      display: none;
+      padding: 20px;
+      border: 1px solid #000;
+    }
+
+    .content.active {
+      display: block;
+    }
+
+    .light-box {
+      display: none;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #000;
+    }
+    .active{
+      display: block;
+    }
+    .container{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      padding: 10px;
+      border: 1px solid #fff;
+      width: 400px;
+      height: 100px;
+      background-color: #0af;
+    }
+    .control-close{
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      border-radius: 10px;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      background-color: #fff;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="control control-open">燈箱</div>
+  <div class="light-box">
+    <div class="container">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis omnis aut pariatur earum non alias similique exercitationem iste libero delectus voluptas dolor natus incidunt ut officia temporibus, consectetur modi architecto.
+      <div class="control control-close">X</div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+
+    $(function () {
+      // 開關按鈕被　click 之後, 切換　class active
+      // $('.control-open').click(function () {
+      //   $('.light-box').css({
+      //     display: 'block',
+      //   });
+      // })
+      // $('.control-close').click(function () {
+      //   $('.light-box').css({
+      //     display: 'none'
+      //   });
+      // })
+      $('.control-open , .control-close').click(function(){
+        $('.light-box').toggleClass('active');
+      })
+    })
+  </script>
+</body>
+
+</html>

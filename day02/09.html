@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.slider{
+			position: relative;
+			overflow: hidden;
+			width: 500px;
+			border: 10px solid #aaa;
+			margin: 100px auto;
+		}
+		.slider ul{
+			left: 0;
+			position: relative;
+			transition: 0.2s;
+			/* width: 1200px; */
+			display: flex;
+			overflow: hidden;
+		}
+		.slider li{
+			/* width: 400px; */
+		}
+		.slider li img{
+			width: 100%;
+			vertical-align: middle;
+		}
+		.control{
+			position: absolute;
+			bottom: 5px;
+			left: 0;
+			right: 0;
+			text-align: center;
+		}
+		.point{
+			display: inline-block;
+			width: 15px;
+			height: 15px;
+			background-color: #ccc;
+			border-radius: 50%;
+		}
+		.active{
+			background-color: #fa0;
+		}
+	</style>
+</head>
+<body>
+	
+	
+	<div class="slider">
+		<ul>
+			<li><img src="https://api.fnkr.net/testimg/400x200/00CED1/FFF/?text=A"></li>
+			<li><img src="https://api.fnkr.net/testimg/400x200/F0CED1/FFF/?text=B"></li>
+			<li><img src="https://api.fnkr.net/testimg/400x200/00FED1/FFF/?text=C"></li>
+		</ul>
+		<div class="control">
+			<div class="point active"></div>
+			<div class="point"></div>
+			<div class="point"></div>
+		</div>
+	</div>
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+		$(function(){
+			let dot_index = 0;
+			let slider_width = $('.slider').width();
+			let li_count = $('.slider li').length;
+			console.log(slider_width)
+			console.log($('.slider li').length)
+			$('.slider ul').css({width : slider_width * li_count});
+			$('.slider li').css({width : slider_width});
+
+			$('.point').click(function(){
+				dot_index = $(this).index();
+				$('.slider ul').css({left: slider_width * dot_index * -1});
+				$(this).addClass('active').siblings().removeClass('active');
+			})
+		})
+	</script>
+
+	
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container{
+      width: 1200px;
+      margin: auto;
+      display: flex;
+      height: 200px;
+      border: 1px solid #ccc;
+    }
+    .item{
+      transition: 1s;
+      width: 40px;
+      height: 200px;
+      flex-grow: 0;
+      overflow: hidden;
+      display: flex;
+    }
+    .label{
+      box-sizing: border-box;
+      writing-mode:vertical-lr;
+      width: 40px;
+      height: 200px;
+      padding: 10px;
+      background-color: #ccc;
+      flex-shrink: 0;
+    }
+    .content{
+      box-sizing: border-box;
+      /* width: calc(1200px - 40px * 3); */
+      background-color: #0aa;
+      padding: 20px;
+      transition: 1s;
+      flex-shrink: 0;
+    }
+    .item.active{
+      flex-grow: 1;
+    }
+    .label.active{
+      background-color: #fa0;
+    }
+    /* .active .content{
+      flex-grow: 1;
+    } */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item">
+      <label for="" class="label">第一個內容</label>
+      <div class="content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum ullam, dicta dolor consequatur quibusdam, magni tenetur fugiat quasi deserunt tempore fugit maiores voluptatum veritatis officia odio corrupti autem, at quae.
+      </div>
+    </div>
+    <div class="item">
+      <label for="" class="label">content 2</label>
+      <div class="content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum ullam, dicta dolor consequatur quibusdam, magni tenetur fugiat quasi deserunt tempore fugit maiores voluptatum veritatis officia odio corrupti autem, at quae.
+      </div>
+    </div>
+    <div class="item">
+      <label for="" class="label">這個是 no.3 content</label>
+      <div class="content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum ullam, dicta dolor consequatur quibusdam, magni tenetur fugiat quasi deserunt tempore fugit maiores voluptatum veritatis officia odio corrupti autem, at quae.
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    $(function(){
+      $('.label').click(function(){
+        // $(this).siblings().addClass('active');
+
+        // $('.box-papa').children().children().children().addClass('active');
+
+        // $('.box-papa').find('.box3').addClass('active');
+        // $(this).parents('.item').siblings().removeClass('active');
+        // $(this).parents('.item').toggleClass('active');
+
+        $(this).toggleClass('active')
+                .parents('.item').toggleClass('active')
+                .siblings().removeClass('active')
+                // .siblings().find('.label')
+                .children('.label').removeClass('active');
+      })
+    })
+  </script>
+</body>
+</html>

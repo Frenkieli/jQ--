@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .content{
+      display: none;
+      padding: 20px;
+      border: 1px solid #000;
+    }
+    .content.active{
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="control">開關</div>
+  <div class="content">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus harum dolorem ad repudiandae culpa nihil quidem, accusamus ex perspiciatis! Eveniet tenetur ullam cum aspernatur repudiandae corrupti quis fugiat porro atque!
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+
+    $(function () {
+      // 開關按鈕被　click 之後, 切換　class active
+      $('.control').click(function(){
+        $('.content').toggle();
+      })
+    })
+  </script>
+</body>
+
+</html>

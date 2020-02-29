@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .side-bar{
+      width: 300px;
+    }
+    .tab{
+      padding: 20px;
+      background-color: #ccc;
+    }
+    .content{
+      display: none;
+    }
+    .active+.content{
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="side-bar">
+    <div class="item">
+      <div class="tab A">A</div>
+      <div class="content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur enim a exercitationem ipsam non qui iure velit labore repellendus, neque aliquam reprehenderit modi itaque. Iure eum inventore harum illo tempora!
+      </div>
+    </div>
+    <div class="item">
+      <div class="tab B">B</div>
+      <div class="content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur enim a exercitationem ipsam non qui iure velit labore repellendus, neque aliquam reprehenderit modi itaque. Iure eum inventore harum illo tempora!
+      </div>
+    </div>
+    <div class="item">
+      <div class="tab C">C</div>
+      <div class="content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur enim a exercitationem ipsam non qui iure velit labore repellendus, neque aliquam reprehenderit modi itaque. Iure eum inventore harum illo tempora!
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+
+    $(function () {
+      $('.A').click(function(){
+        $('.A').toggleClass('active');
+        $('.B ,.C').removeClass('active');
+      })
+      $('.B').click(function(){
+        $('.B').toggleClass('active');
+        $('.A ,.C').removeClass('active');
+      })
+      $('.C').click(function(){
+        $('.C').toggleClass('active');
+        $('.B ,.A').removeClass('active');
+      })
+    })
+  </script>
+</body>
+
+</html>

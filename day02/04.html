@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    ul{
+      width: 500px;
+      margin: 50px auto;
+    }
+    .item{
+      float: left;
+      padding: 5px 20px;
+      margin-right: 5px;
+    }
+    div{
+      clear: both;
+      text-align: center;
+    }
+    .active{
+      background-color: #0af;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="item active">1</li>
+    <li class="item">2</li>
+    <li class="item">3</li>
+    <li class="item">4</li>
+    <li class="item">5</li>
+    <li class="item">6</li>
+  </ul>
+  <div>
+    <button id='before'>before</button>
+    <button id='next'>next</button>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    $(function(){
+      $('#next').click(function(){
+        if($('ul .active').next().length != 0){
+          $('ul .active').removeClass('active').next().addClass('active');
+        }
+      })
+      $('#before').click(function(){
+        if($('ul .active').prev().length != 0){
+        $('ul .active').removeClass('active').prev().addClass('active');
+        }
+      })
+    })
+  </script>
+</body>
+</html>

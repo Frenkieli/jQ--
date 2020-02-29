@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    ul{
+      width: 500px;
+      margin: 50px auto;
+    }
+    li{
+      height: 20px;
+      transition: 0.3s;
+      float: left;
+      padding: 5px 20px;
+      margin-right: 5px;
+      border: 1px solid #333;
+    }
+    .active{
+      height: 40px;
+      background-color: #fa0;
+    }
+    .sub{
+      height: 43px;
+    }
+  </style>
+</head>
+<body>
+<div class="slide">
+  <ul class="list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li class="sub">4</li>
+    <li class="active">5</li>
+    <li class="sub">6</li>
+  </ul>
+</div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    $(function(){
+      $('li').hover(
+        function(e){
+        $(this).addClass('active');
+        $(this).siblings('.active').removeClass('active');
+        $(this).prev().addClass('sub');
+        $(this).next().addClass('sub');
+        },
+        function(e){
+          // $(this).removeClass('active');
+          $(this).prev().removeClass('sub');
+          $(this).next().removeClass('sub');
+        }
+      )
+    })
+  </script>
+</body>
+</html>

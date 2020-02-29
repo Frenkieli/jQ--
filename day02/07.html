@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    li{
+      display: block;
+      width: 200px;
+      padding: 50px;
+    }
+    .active{
+      background-color: #fa0;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li class="active">4</li>
+    <li>5</li>
+    <li>6</li>
+  </ul>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script>
+    $(function(){
+      let index = $('.active').index();   //index
+      let li = $('li').length;   //index
+      let width = $('.active').width();   //內容
+      let innerwidth = $('.active').innerWidth();
+      // let index = $('.active').index();
+      console.log(index);
+      console.log(li);
+      console.log(width);
+      console.log(innerwidth);
+    })
+  </script>
+</body>
+</html>

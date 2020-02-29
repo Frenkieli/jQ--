@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    span.amos{
+      background-color: red;
+    }
+    .active{
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <span>span</span>
+  <div class="box1">.box1</div>
+  <div class="box2 amos">.box2 .amos</div>
+  <span class="box2 amos">span box2 .amos</span>
+  <div class="box3 amos">.box2 .amos</div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    window.jquery || document.write("<script src='jq.3.4.1.min.js'><\/script>");
+      $('[class *= "amos"]').addClass('active');
+  </script>
+</body>
+</html>

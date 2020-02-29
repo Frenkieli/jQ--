@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* span.amos{
+      background-color: red;
+    } */
+    /* .active {
+      background-color: #ccc;
+    } */
+    .tab {
+      display: inline-block;
+      padding: 10px 30px;
+      background-color: #ddd;
+    }
+
+    .tab-content {
+      display: none;
+      border: 1px solid #ccc;
+      padding: 20px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* 這個有趣 */
+    .tab-group {
+      counter-reset: my-area 0;
+    }
+
+    .tab::before {
+      content: counter(my-area) '. ';
+      counter-increment: my-area 1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="tab-place">
+    <div class="tab-group">
+      <div class="tab A" id="A">A</div>
+      <div class="tab B" id="B">B</div>
+      <div class="tab C" id="C">C</div>
+    </div>
+    <div class="content-group">
+      <div class="tab-content AC active">
+AAAAAAAAAAAAAAAAAAAAAAAAAAA
+      </div>
+      <div class="tab-content BC">
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+      </div>
+      <div class="tab-content CC">
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+
+    $(function () {
+      // $('.A').click(
+      //   function(){
+      //     $('.AC').addClass('active');
+      //     $('.BC,.CC').removeClass('active');
+      //   }
+      // )
+      // $('.B').click(
+      //   function(){
+      //     $('.BC').addClass('active');
+      //     $('.AC,.CC').removeClass('active');
+      //   }
+      // )
+      // $('.C').click(
+      //   function(){
+      //     $('.CC').addClass('active');
+      //     $('.AC,.BC').removeClass('active');
+      //   }
+      // )
+      $('.tab-group').click(
+        function(e){
+          e.stopPropagation();
+          $('.tab-content').removeClass('active');
+          $('.' + e.target.id + 'C').addClass('active');
+        }
+      )
+    })
+  </script>
+</body>
+
+</html>
