@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .slider-box{
+      width: 300px;
+      height: 300px;
+      margin: auto;
+      overflow: hidden;
+    }
+    .slider-list {
+      display: flex;
+      height: 100%;
+      position: relative;
+      left: 0;
+      transition: 1s;
+    }
+    .slider{
+      height: 100%;
+      margin: 30px auto;
+      background-color: #fa0;
+    }
+    .dot{
+      text-align: center;
+    }
+    .dot li{
+      display: inline-block;
+      background-color: #333;
+      border-radius: 10px;
+      width: 20px;
+      height: 20px;
+    }
+    .dot li.active{
+      background-color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slider-box">
+    <ul class="slider-list">
+      <li class="slider">1</li>
+      <li class="slider">2</li>
+      <li class="slider">3</li>
+      <li class="slider">4</li>
+      <li class="slider">5</li>
+    </ul>
+  </div>
+  <div>
+    <ul class="dot"></ul>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+      // let sliders = $('.slider').length;
+      let imgCount  = $('.slider-list li').length;
+      let sliderWidth = $('.slider-box').width();
+      let dot_index = 0 ;
+      $('.slider').width(sliderWidth);
+      // for(let i = 0 ; i < sliders ; i++){
+      //   $('.dot').append('<li></li>')
+      // }
+      $('.slider-list').css({width:sliderWidth * imgCount});
+      let li_list = '';
+      for (let i =0 ; i < imgCount ; i++){
+        li_list = li_list + '<li></li>';
+      }
+      $('.dot').append(li_list);
+      $('.dot li').eq(0).addClass('active');
+      $('.dot li').click(function(){
+        dot_index = $(this).index();
+        $('.slider-list').css({left:sliderWidth * dot_index * -1});
+        $(this).addClass('active').siblings('.active').removeClass('active');
+      })
+
+      let TT =setInterval(function(){
+        if(dot_index < imgCount - 1){
+          dot_index++
+        }else{
+          dot_index = 0;
+        }
+        $('.dot li').eq(dot_index).addClass('active').siblings('.active').removeClass('active');
+        $('.slider-list').css({left: sliderWidth * dot_index * -1});
+      }, 2000)
+    })
+  </script>
+</body>
+
+</html>
