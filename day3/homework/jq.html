@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+    <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/base_color.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- <img src="https://picsum.photos/1920/1080/?random=1"><img src="https://picsum.photos/1920/1080/?random=2"><img src="https://picsum.photos/1920/1080/?random=3"> -->
+  <hr class="debug_line">
+  <nav class="navbar">
+    <ul class="navbar_list" id="navbar_list">
+    </ul>
+  </nav>
+  <div id="topButton">
+    <img src="img/top.svg" alt="上">
+  </div>
+  <section class="section header active" data-title="Strange">
+    <div class="container">
+      <h1 class="header_title"><span class="title_move">Life Is Strange</span></h1>
+    </div>
+  </section>
+  <section class="section hightlight" data-title="Brave">
+    <div class="container">
+      <canvas id="canvasBrave"></canvas>
+    </div>
+  </section>
+  <section class="section adventure" data-title="Adventure">
+    <div class="container">
+      <canvas id="canvasAdventure"></canvas>
+    </div>
+  </section>
+  <section class="section story" data-title="Story">
+    <div class="container">
+
+    </div>
+  </section>
+  <section class="section end" data-title="End">
+    <div class="container">
+
+    </div>
+  </section>
+  <script src="js/jq.3.4.1.min.js"></script>
+  <script src="js/scrollSectionEvent.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
