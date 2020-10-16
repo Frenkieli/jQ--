@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .slider-box{
+      width: 300px;
+      height: 300px;
+      margin: auto;
+      /* overflow-y: hidden; */
+      position: relative;
+
+    }
+    .slider-list {
+      display: flex;
+      height: 100%;
+      position: relative;
+      left: 0;
+      /* transition: 1s; */
+    }
+    .slider{
+      height: calc(100% - 30px);
+      margin: 15px auto;
+      /* background-color: #fa0; */
+    }
+    .dot{
+      text-align: center;
+    }
+    .dot li{
+      display: inline-block;
+      background-color: #333;
+      border-radius: 10px;
+      width: 20px;
+      height: 20px;
+      margin: 10px;
+    }
+    .dot li.active{
+      background-color: #ccc;
+    }
+    button{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%) scale(2, 3);
+      color: #00f;
+      background-color:transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+    .pre{
+      left: 10px;
+    }
+    .next{
+      right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slider-box">
+    <ul class="slider-list">
+      <li class="slider"><img src="https://picsum.photos/300/250/?random=1"></li>
+      <li class="slider"><img src="https://picsum.photos/300/250/?random=2"></li>
+      <li class="slider"><img src="https://picsum.photos/300/250/?random=3"></li>
+      <li class="slider active"><img src="https://picsum.photos/300/250/?random=4"></li>
+      <li class="slider"><img src="https://picsum.photos/300/250/?random=5"></li>
+    </ul>
+    <div class="control">
+      <button class="pre">◀</button>
+      <button class="next">▶</button>
+    </div>
+  </div>
+  <div>
+    <ul class="dot"></ul>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+      // let sliders = $('.slider').length;
+
+      let imgCount  = $('.slider-list li').length;
+      let sliderWidth = $('.slider-box').width();
+      let dot_index = 0;
+
+      
+      if($('.slider-list .active').length > 1){
+        dot_index = $('.slider-list .active').eq(0).index();
+      }
+
+
+
+      $('.slider-list').css({left: sliderWidth * dot_index * -1});
+      $('.slider').width(sliderWidth);
+      // for(let i = 0 ; i < sliders ; i++){
+      //   $('.dot').append('<li></li>')
+      // }
+      console.log($('.slider').eq(0).clone());
+      $('.slider-list').append($('.slider').eq(0).clone());
+
+      $('.slider-list').css({width:sliderWidth * imgCount});
+      let li_list = '';
+
+      for (let i =0 ; i < imgCount ; i++){
+        li_list = li_list + '<li></li>';
+      }
+      $('.dot').append(li_list);
+      $('.dot li').eq(dot_index).addClass('active');
+      $('.dot li').click(function(){
+        dot_index = $(this).index();
+        changeSlider();
+      })
+
+      let TT =setInterval(sliderPlay, 2000)
+
+      $('.slider').hover(function(){
+        clearInterval(TT);
+      },function(){
+        TT = setInterval(sliderPlay, 2000)
+      })
+      
+      function changeSlider(){
+        $('.dot li').eq(dot_index).addClass('active').siblings('.active').removeClass('active');
+        $('.slider-list').animate({left: sliderWidth * dot_index * -1},
+        function(e){
+          if(dot_index >= imgCount){
+            dot_index = 0;
+            $('.slider-list').css({left: sliderWidth * dot_index * -1});
+          }
+          dotCgange();
+        });
+        console.log(imgCount , dot_index)
+      }
+      function dotCgange(){
+        $('.dot li').eq(dot_index).addClass('active').siblings('.active').removeClass('active');
+      }
+      function sliderPlay(){
+        if(dot_index < imgCount){
+          dot_index++
+        }else{
+          dot_index = 0;
+        }
+        changeSlider();
+      }
+
+      $('.next').click(function(e){
+        if(dot_index >= imgCount){
+          dot_index = 0;
+          $('.slider-list').css({left: 0});
+        }
+        dot_index++;
+        changeSlider();
+      })
+
+      $('.pre').click(function(){
+        if(dot_index <= 0){
+          dot_index = imgCount;
+          $('.slider-list').css({left: sliderWidth * dot_index * -1});
+        }
+        dot_index--;
+        changeSlider();
+      })
+    })
+  </script>
+</body>
+
+</html>

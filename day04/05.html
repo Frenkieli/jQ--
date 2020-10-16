@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    nav a {
+      width: 10px;
+      height: 10px;
+      margin: 5px;
+      background-color: #ccc;
+    }
+
+    a.active {
+      background-color: #000;
+    }
+
+    section {
+      width: 100%;
+      height: 100vh;
+      font-size: 180px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .A {
+      background-color: #fa0;
+    }
+
+    .B {
+      background-color: #0af;
+    }
+
+    .C {
+      background-color: #a0f;
+    }
+
+    .D {
+      background-color: #0fa;
+    }
+
+    .E {
+      background-color: #f0a;
+    }
+
+    .F {
+      background-color: #af0;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="#A" class="active"></a>
+    <a href="#B"></a>
+    <a href="#C"></a>
+    <a href="#D"></a>
+    <a href="#E"></a>
+    <a href="#F"></a>
+  </nav>
+
+  <section class="section A" id="A">A</section>
+  <section class="section B" id="B">B</section>
+  <section class="section C" id="C">C</section>
+  <section class="section D" id="D">D</section>
+  <section class="section E" id="E">E</section>
+  <section class="section F" id="F">F</section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+      let dot_index;
+      $('nav a').click(function () {
+        // return false;
+        let target = $(this).attr('href');
+        // 捲動頁面
+        $('html, body').animate({ scrollTop: $(target).offset().top })
+        $('nav a').eq($(this).index()).addClass('active').siblings().removeClass('active');
+        dot_index = $(this).index();
+        change_dot();
+        return false;
+      })
+      let winTop = 0;
+      $(window).scroll(function () {
+        winTop = $(window).scrollTop();
+        // if (winTop >= $('#A').offset().top) {
+        //   dot_index = 0 ;
+        // }
+        // if (winTop >= $('#B').offset().top) {
+        //   dot_index = 1 ;
+        // }
+        // if (winTop >= $('#C').offset().top) {
+        //   dot_index = 2 ;
+        // }
+        // if (winTop >= $('#D').offset().top) {
+        //   dot_index = 3 ;
+        // }
+        // if (winTop >= $('#E').offset().top) {
+        //   dot_index = 4 ;
+        // }
+        // if (winTop >= $('#F').offset().top) {
+        //   dot_index = 5 ;
+        // }
+// =============================
+        // for(let i = 0; i < $('.section').length; i++){
+        //   if( winTop >= $('.section').eq(i).offset().top ){
+        //     dot_index = i ;
+        //   }
+        // }
+// =============================
+        $('.section').each(function(i, elm){
+          if(winTop >= $(elm).offset().top){
+            dot_index = i ;
+          }
+        })
+        change_dot();
+      })
+      function change_dot(){
+        $('nav a').eq(dot_index).addClass('active').siblings().removeClass('active');
+      }
+    })
+  </script>
+</body>
+
+</html>
